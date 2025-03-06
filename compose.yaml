@@ -1,0 +1,45 @@
+﻿services:
+  order.consumer:
+    container_name: order.consumer
+    image: order.consumer
+    build:
+      context: .
+      dockerfile: src/Order.Consumer/Dockerfile
+    depends_on:
+      - order.db
+      - order.rabbitmq
+        
+  order.producer:
+    container_name: order.producer
+    image: order.producer
+    build:
+      context: .
+      dockerfile: src/Order.Producer/Dockerfile
+    environment:
+      ASPNETCORE_HTTP_PORTS: 8080
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - 5268:8080
+    depends_on:
+      - order.rabbitmq
+      
+  order.db:
+    container_name: order.db
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+    depends_on:
+      - order.rabbitmq
+      
+  order.rabbitmq:
+    container_name: order.rabbitmq
+    image: rabbitmq:management
+    environment:
+      - RABBITMQ_DEFAULT_USER=order
+      - RABBITMQ_DEFAULT_PASS=order
+    ports:
+      - 5672:5672
+      - 15672:15672
