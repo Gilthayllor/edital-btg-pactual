@@ -1,9 +1,7 @@
 using MassTransit;
-using MassTransit.RabbitMqTransport.Topology;
-using MassTransit.Transports.Fabric;
 using Order.Consumer;
-using Order.Consumer.Events;
-using Order.Producer.Endpoints;
+using Ordering.Producer.Endpoints;
+using Ordering.Shared.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,10 +21,9 @@ builder.Services.AddMassTransit(busConfigurator =>
             h.Password(rabbitMqConfig.Password);
         });
         
-        rb.Publish<OrderCreated>(x =>
-        {
-            x.ExchangeType = "direct";
-        });
+        rb.Publish<OrderCreated>();
+        
+        rb.ConfigureEndpoints(busCtx);
     });
 });
 

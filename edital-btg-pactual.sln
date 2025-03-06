@@ -2,9 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{68D7B718-C00E-4AC4-ADE5-28C09379B9C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Consumer", "src\Order.Consumer\Order.Consumer.csproj", "{2F2E895E-93E3-48FF-B177-833700E47A83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Consumer", "src\Ordering.Consumer\Ordering.Consumer.csproj", "{2F2E895E-93E3-48FF-B177-833700E47A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.API", "src\Order.API\Order.API.csproj", "{870141E3-C125-4E70-A118-BC5E937192BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "src\Ordering.API\Ordering.API.csproj", "{870141E3-C125-4E70-A118-BC5E937192BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1E8D897-B239-42EC-B460-64F64B547176}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Producer", "src\Order.Producer\Order.Producer.csproj", "{77403260-505A-454B-9B62-6D73151D31AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Producer", "src\Ordering.Producer\Ordering.Producer.csproj", "{77403260-505A-454B-9B62-6D73151D31AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Shared", "src\Ordering.Shared\Ordering.Shared.csproj", "{F7A057D8-259B-4940-AFB0-A8C824585B38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,7 @@ Global
 		{2F2E895E-93E3-48FF-B177-833700E47A83} = {68D7B718-C00E-4AC4-ADE5-28C09379B9C8}
 		{870141E3-C125-4E70-A118-BC5E937192BE} = {68D7B718-C00E-4AC4-ADE5-28C09379B9C8}
 		{77403260-505A-454B-9B62-6D73151D31AD} = {68D7B718-C00E-4AC4-ADE5-28C09379B9C8}
+		{F7A057D8-259B-4940-AFB0-A8C824585B38} = {68D7B718-C00E-4AC4-ADE5-28C09379B9C8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2F2E895E-93E3-48FF-B177-833700E47A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -37,5 +40,9 @@ Global
 		{77403260-505A-454B-9B62-6D73151D31AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77403260-505A-454B-9B62-6D73151D31AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77403260-505A-454B-9B62-6D73151D31AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A057D8-259B-4940-AFB0-A8C824585B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A057D8-259B-4940-AFB0-A8C824585B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A057D8-259B-4940-AFB0-A8C824585B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A057D8-259B-4940-AFB0-A8C824585B38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

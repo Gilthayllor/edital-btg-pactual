@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace Order.Consumer.Repositories.Order;
+namespace Ordering.Consumer.Repositories.Order;
 
 public class OrderRepository : IOrderRepository
 {

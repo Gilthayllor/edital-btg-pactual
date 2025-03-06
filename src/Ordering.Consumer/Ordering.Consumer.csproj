@@ -19,4 +19,8 @@
         <Link>.dockerignore</Link>
       </Content>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Ordering.Shared\Ordering.Shared.csproj" />
+    </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Order.Consumer.Events;
+﻿namespace Ordering.Shared.Events;
 
 public record OrderCreated
 {
@@ -13,4 +13,3 @@ public record OrderCreated
         public decimal Preco { get; set; }
     }
 }
-

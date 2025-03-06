@@ -1,4 +1,4 @@
-﻿namespace Order.Consumer;
+﻿namespace Ordering.Consumer;
 
 public class RabbitMqSettings
 {

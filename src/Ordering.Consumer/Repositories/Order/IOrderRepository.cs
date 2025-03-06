@@ -1,4 +1,4 @@
-﻿namespace Order.Consumer.Repositories.Order;
+﻿namespace Ordering.Consumer.Repositories.Order;
 
 public interface IOrderRepository
 {

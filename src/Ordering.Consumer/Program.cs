@@ -1,8 +1,9 @@
 using MassTransit;
 using MongoDB.Driver;
-using Order.Consumer;
-using Order.Consumer.Consumers;
-using Order.Consumer.Repositories.Order;
+using Ordering.Consumer;
+using Ordering.Consumer.Consumers;
+using Ordering.Consumer.Entities;
+using Ordering.Consumer.Repositories.Order;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
@@ -11,16 +12,16 @@ var host = Host.CreateDefaultBuilder(args)
         {
             var connectionString = context.Configuration.GetConnectionString("MongoDb") ??
                                    throw new ArgumentNullException(nameof(context.Configuration));
-            
+
             return new MongoClient(connectionString);
         });
 
         services.AddScoped<IOrderRepository, OrderRepository>();
-        
+
         services.AddMassTransit(busConfigurator =>
         {
-            busConfigurator.AddConsumer<OrderConsumer>();
-            
+            busConfigurator.AddConsumer<OrderCreatedConsumer>();
+
             busConfigurator.UsingRabbitMq((busCtx, rb) =>
             {
                 var rabbitMqConfig = context.Configuration.GetSection("RabbitMq").Get<RabbitMqSettings>() ??
@@ -31,11 +32,10 @@ var host = Host.CreateDefaultBuilder(args)
                     h.Username(rabbitMqConfig.Username);
                     h.Password(rabbitMqConfig.Password);
                 });
-                
-                
+
                 rb.ReceiveEndpoint("order-created-queue", ep =>
                 {
-                    ep.ConfigureConsumer<OrderConsumer>(busCtx);
+                    ep.ConfigureConsumer<OrderCreatedConsumer>(busCtx);
                 });
             });
         });
