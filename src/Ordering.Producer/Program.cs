@@ -10,6 +10,8 @@ builder.Services.AddOpenApiDocument();
 
 builder.Services.AddMassTransit(busConfigurator =>
 {
+    busConfigurator.SetKebabCaseEndpointNameFormatter();
+    
     busConfigurator.UsingRabbitMq((busCtx, rb) =>
     {
         var rabbitMqConfig = builder.Configuration.GetSection("RabbitMq").Get<RabbitMqSettings>() ??
@@ -21,8 +23,6 @@ builder.Services.AddMassTransit(busConfigurator =>
             h.Password(rabbitMqConfig.Password);
         });
         
-        rb.Publish<OrderCreated>();
-        
         rb.ConfigureEndpoints(busCtx);
     });
 });
@@ -31,7 +31,10 @@ var app = builder.Build();
 
 app.MapEndpoints();
 
-app.UseOpenApi();
-app.UseSwaggerUi();
+if (app.Environment.IsDevelopment())
+{
+    app.UseOpenApi();
+    app.UseSwaggerUi();
+}
 
 app.Run();

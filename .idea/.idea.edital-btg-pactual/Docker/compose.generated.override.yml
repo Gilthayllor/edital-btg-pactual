@@ -24,9 +24,9 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     image: "ordering.consumer:dev"
     ports:
-    - "127.0.0.1:57042:57000"
-    - "127.0.0.1:57242:57200"
-    - "127.0.0.1:57442:57400"
+    - "127.0.0.1:57068:57000"
+    - "127.0.0.1:57268:57200"
+    - "127.0.0.1:57468:57400"
     volumes:
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual\\src\\Ordering.Consumer:/app:rw"
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual:/src:rw"
@@ -35,7 +35,7 @@ services:
       Linux64:/opt/JetBrains/RiderDebuggerTools"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2024.3.3\\bin\\backend-log.xml:/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     - "C:\\Users\\gsousa\\AppData\\Local\\JetBrains\\Rider2024.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2025_3_06_20_46_46:/var/opt/JetBrains/RiderDebuggerTools:rw"
+      JetBrains.Debugger.Worker.2025_3_07_13_43_47:/var/opt/JetBrains/RiderDebuggerTools:rw"
     working_dir: "/app"
   ordering.producer:
     build:
@@ -60,9 +60,9 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     image: "ordering.producer:dev"
     ports:
-    - "127.0.0.1:57043:57000"
-    - "127.0.0.1:57243:57200"
-    - "127.0.0.1:57443:57400"
+    - "127.0.0.1:57069:57000"
+    - "127.0.0.1:57269:57200"
+    - "127.0.0.1:57469:57400"
     volumes:
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual\\src\\Ordering.Producer:/app:rw"
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual:/src:rw"
@@ -71,5 +71,5 @@ services:
       Linux64:/opt/JetBrains/RiderDebuggerTools"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2024.3.3\\bin\\backend-log.xml:/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     - "C:\\Users\\gsousa\\AppData\\Local\\JetBrains\\Rider2024.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2025_3_06_20_46_46:/var/opt/JetBrains/RiderDebuggerTools:rw"
+      JetBrains.Debugger.Worker.2025_3_07_13_43_47:/var/opt/JetBrains/RiderDebuggerTools:rw"
     working_dir: "/app"

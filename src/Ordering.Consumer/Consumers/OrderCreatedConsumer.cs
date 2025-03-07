@@ -14,7 +14,7 @@ public class OrderCreatedConsumer(IOrderRepository orderRepository, ILogger<Orde
         try
         {
             var newOrder = new Order()
-            {
+            { 
                 CodigoPedido = context.Message.CodigoPedido,
                 CodigoCliente = context.Message.CodigoCliente,
                 Itens = context.Message.Itens.Select(x => new Item

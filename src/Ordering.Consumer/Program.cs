@@ -4,6 +4,7 @@ using Ordering.Consumer;
 using Ordering.Consumer.Consumers;
 using Ordering.Consumer.Entities;
 using Ordering.Consumer.Repositories.Order;
+using Ordering.Shared.Events;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
@@ -20,6 +21,8 @@ var host = Host.CreateDefaultBuilder(args)
 
         services.AddMassTransit(busConfigurator =>
         {
+            busConfigurator.SetKebabCaseEndpointNameFormatter();
+
             busConfigurator.AddConsumer<OrderCreatedConsumer>();
 
             busConfigurator.UsingRabbitMq((busCtx, rb) =>
@@ -32,11 +35,8 @@ var host = Host.CreateDefaultBuilder(args)
                     h.Username(rabbitMqConfig.Username);
                     h.Password(rabbitMqConfig.Password);
                 });
-
-                rb.ReceiveEndpoint("order-created-queue", ep =>
-                {
-                    ep.ConfigureConsumer<OrderCreatedConsumer>(busCtx);
-                });
+                
+                rb.ConfigureEndpoints(busCtx);
             });
         });
     })

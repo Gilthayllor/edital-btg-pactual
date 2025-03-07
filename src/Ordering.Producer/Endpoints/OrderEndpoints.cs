@@ -7,7 +7,7 @@ public static class OrderEndpoints
 {
     public static void MapEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapPost("api/create-order", async (OrderDTO order, IBus publisher) =>
+        endpoints.MapPost("api/create-order", async (OrderRequest order, IBus publisher) =>
             {
                 await publisher.Publish(new OrderCreated
                 {
@@ -25,7 +25,7 @@ public static class OrderEndpoints
             .WithTags("ordering");
     }
 
-    public record OrderDTO
+    public record OrderRequest
     {
         public int CodigoPedido { get; init; }
         public int CodigoCliente { get; init; }
