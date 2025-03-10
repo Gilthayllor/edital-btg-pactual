@@ -37,8 +37,11 @@ public static class OrderEndpoints
         app.MapGet("api/v1/orders/{code}/total", [Authorize]
                 async ([FromRoute] int code, [FromServices] IOrderRepository repository) =>
                 {
-                    var total = await repository.GetTotalOrderValue(code);
-                    return Results.Ok(total);
+                    var order = await repository.GetOrderByCode(code);
+
+                    return order == null
+                        ? Results.NotFound()
+                        : Results.Ok(order.Items.Sum(x => x.Quantidade * x.Preco));
                 })
             .WithTags(tags);
 

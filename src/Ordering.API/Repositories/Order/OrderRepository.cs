@@ -31,12 +31,4 @@ public class OrderRepository : IOrderRepository
         _logger.LogInformation("Fetching orders by Customer code {customerCode}", customerCode);
         return await _orders.Find(x => x.CodigoPedido == customerCode).ToListAsync();
     }
-
-    public async Task<decimal> GetTotalOrderValue(int orderCode)
-    {
-        _logger.LogInformation("Fetching total order value by order code {orderCode}", orderCode);
-        var order = await _orders.Find(x => x.CodigoPedido == orderCode).FirstOrDefaultAsync();
-
-        return order?.Items.Sum(x => x.Preco) ?? 0;
-    }
 }
