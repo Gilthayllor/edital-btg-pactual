@@ -29,6 +29,6 @@ public class OrderRepository : IOrderRepository
     public async Task<IEnumerable<Entities.Order>> GetOrdersByCustomerCode(int customerCode)
     {
         _logger.LogInformation("Fetching orders by Customer code {customerCode}", customerCode);
-        return await _orders.Find(x => x.CodigoPedido == customerCode).ToListAsync();
+        return await _orders.Find(x => x.CodigoCliente == customerCode).ToListAsync();
     }
 }
