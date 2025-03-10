@@ -11,18 +11,18 @@ builder.Services.AddOpenApiDocument();
 builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
-    
+
     busConfigurator.UsingRabbitMq((busCtx, rb) =>
     {
         var rabbitMqConfig = builder.Configuration.GetSection("RabbitMq").Get<RabbitMqSettings>() ??
-                             throw new ArgumentNullException(nameof(builder.Configuration));
+                             throw new InvalidOperationException("RabbitMq settings not found");
 
         rb.Host(rabbitMqConfig.Host, "/", h =>
         {
             h.Username(rabbitMqConfig.Username);
             h.Password(rabbitMqConfig.Password);
         });
-        
+
         rb.ConfigureEndpoints(busCtx);
     });
 });
