@@ -23,9 +23,9 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     image: "ordering.api:dev"
     ports:
-    - "127.0.0.1:57024:57000"
-    - "127.0.0.1:57224:57200"
-    - "127.0.0.1:57424:57400"
+    - "127.0.0.1:57033:57000"
+    - "127.0.0.1:57233:57200"
+    - "127.0.0.1:57433:57400"
     volumes:
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual\\src\\Ordering.API:/app:rw"
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual:/src:rw"
@@ -34,7 +34,7 @@ services:
       Linux64:/opt/JetBrains/RiderDebuggerTools"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2024.3.3\\bin\\backend-log.xml:/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     - "C:\\Users\\gsousa\\AppData\\Local\\JetBrains\\Rider2024.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2025_3_10_10_44_01:/var/opt/JetBrains/RiderDebuggerTools:rw"
+      JetBrains.Debugger.Worker.2025_3_10_11_03_57:/var/opt/JetBrains/RiderDebuggerTools:rw"
     working_dir: "/app"
   ordering.consumer:
     build:
@@ -59,9 +59,9 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     image: "ordering.consumer:dev"
     ports:
-    - "127.0.0.1:57025:57000"
-    - "127.0.0.1:57225:57200"
-    - "127.0.0.1:57425:57400"
+    - "127.0.0.1:57034:57000"
+    - "127.0.0.1:57234:57200"
+    - "127.0.0.1:57434:57400"
     volumes:
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual\\src\\Ordering.Consumer:/app:rw"
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual:/src:rw"
@@ -70,7 +70,7 @@ services:
       Linux64:/opt/JetBrains/RiderDebuggerTools"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2024.3.3\\bin\\backend-log.xml:/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     - "C:\\Users\\gsousa\\AppData\\Local\\JetBrains\\Rider2024.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2025_3_10_10_44_01:/var/opt/JetBrains/RiderDebuggerTools:rw"
+      JetBrains.Debugger.Worker.2025_3_10_11_03_57:/var/opt/JetBrains/RiderDebuggerTools:rw"
     working_dir: "/app"
   ordering.producer:
     build:
@@ -95,9 +95,9 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     image: "ordering.producer:dev"
     ports:
-    - "127.0.0.1:57026:57000"
-    - "127.0.0.1:57226:57200"
-    - "127.0.0.1:57426:57400"
+    - "127.0.0.1:57035:57000"
+    - "127.0.0.1:57235:57200"
+    - "127.0.0.1:57435:57400"
     volumes:
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual\\src\\Ordering.Producer:/app:rw"
     - "C:\\Users\\gsousa\\RiderProjects\\edital-btg-pactual:/src:rw"
@@ -106,5 +106,5 @@ services:
       Linux64:/opt/JetBrains/RiderDebuggerTools"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2024.3.3\\bin\\backend-log.xml:/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
     - "C:\\Users\\gsousa\\AppData\\Local\\JetBrains\\Rider2024.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2025_3_10_10_44_01:/var/opt/JetBrains/RiderDebuggerTools:rw"
+      JetBrains.Debugger.Worker.2025_3_10_11_03_57:/var/opt/JetBrains/RiderDebuggerTools:rw"
     working_dir: "/app"

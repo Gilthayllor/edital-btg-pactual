@@ -25,7 +25,7 @@ public class OrderCreatedConsumer(IOrderRepository orderRepository, ILogger<Orde
                 }).ToList()
             };
 
-            await orderRepository.InsertAsync(newOrder);
+            await orderRepository.IsertOrUpdateAsync(newOrder);
             logger.LogInformation("Order {codigoPedido} Inserted", context.Message.CodigoPedido);
         }
         catch (Exception e)

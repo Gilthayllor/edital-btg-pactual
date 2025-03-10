@@ -2,5 +2,5 @@
 
 public interface IOrderRepository
 {
-    Task InsertAsync(Entities.Order order);
+    Task IsertOrUpdateAsync(Entities.Order order);
 }
