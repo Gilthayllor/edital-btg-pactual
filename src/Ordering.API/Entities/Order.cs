@@ -12,13 +12,4 @@ public class Order
     public int CodigoPedido { get; set; }
     public int CodigoCliente { get; set; }
     public List<Item> Items { get; set; } = [];
-    
-    [BsonIgnore]
-    public decimal Total
-    {
-        get
-        {
-            return Items?.Sum(x => x.Preco) ?? 0;
-        }
-    }
 }

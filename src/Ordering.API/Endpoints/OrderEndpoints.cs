@@ -33,7 +33,15 @@ public static class OrderEndpoints
                     return Results.Ok(orders);
                 })
             .WithTags(tags);
-        
+
+        app.MapGet("api/v1/orders/{code}/total", [Authorize]
+                async ([FromRoute] int code, [FromServices] IOrderRepository repository) =>
+                {
+                    var total = await repository.GetTotalOrderValue(code);
+                    return Results.Ok(total);
+                })
+            .WithTags(tags);
+
         return app;
     }
 }
