@@ -17,18 +17,21 @@ public class OrderRepository : IOrderRepository
     public async Task<IEnumerable<Entities.Order>> GetOrdersAsync()
     {
         _logger.LogInformation("Fetching all orders");
-        return await _orders.Find(x => true).ToListAsync();
+        using var cursor = await _orders.FindAsync(x => true);
+        return await cursor.ToListAsync();
     }
 
-    public async Task<Entities.Order?> GetOrderByCode(int orderCode)
+    public async Task<Entities.Order?> GetOrderByCode(int codigoPedido)
     {
-        _logger.LogInformation("Fetching order by order code {orderCode}", orderCode);
-        return await _orders.Find(x => x.CodigoPedido == orderCode).FirstOrDefaultAsync();
+        _logger.LogInformation($"Fetching order with code {codigoPedido}");
+        using var cursor = await _orders.FindAsync(order => order.CodigoPedido == codigoPedido);
+        return await cursor.FirstOrDefaultAsync();
     }
 
-    public async Task<IEnumerable<Entities.Order>> GetOrdersByCustomerCode(int customerCode)
+    public async Task<IEnumerable<Entities.Order>> GetOrdersByCustomerCode(int codigoCliente)
     {
-        _logger.LogInformation("Fetching orders by Customer code {customerCode}", customerCode);
-        return await _orders.Find(x => x.CodigoCliente == customerCode).ToListAsync();
+        _logger.LogInformation($"Fetching orders for customer with code {codigoCliente}");
+        using var cursor = await _orders.FindAsync(order => order.CodigoCliente == codigoCliente);
+        return await cursor.ToListAsync();
     }
 }
