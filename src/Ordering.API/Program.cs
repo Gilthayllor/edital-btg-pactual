@@ -93,25 +93,6 @@ void ConfigureAuthentication()
                     builder.Configuration["JwtSettings:Key"] ??
                     throw new InvalidOperationException("JwtSettings:Key not found"))),
             };
-
-            x.Events = new JwtBearerEvents()
-            {
-                OnAuthenticationFailed = context =>
-                {
-                    context.Response.StatusCode = 401;
-                    _ = context.Exception switch
-                    {
-                        SecurityTokenExpiredException => context.Response.Headers["Token-Expired"] = "true",
-                        SecurityTokenInvalidAudienceException => context.Response.Headers["Token-Invalid-Audience"] =
-                            "true",
-                        SecurityTokenInvalidIssuerException =>
-                            context.Response.Headers["Token-Invalid-Issuer"] = "true",
-                        _ => context.Response.Headers["Token-Error"] = "true"
-                    };
-
-                    return Task.CompletedTask;
-                }
-            };
         });
 
     builder.Services.AddAuthorization();
