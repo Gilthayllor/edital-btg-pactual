@@ -19,4 +19,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Ordering.API\Ordering.API.csproj" />
+    </ItemGroup>
+
 </Project>
