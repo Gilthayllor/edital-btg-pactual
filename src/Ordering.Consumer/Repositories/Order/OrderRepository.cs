@@ -20,6 +20,8 @@ public class OrderRepository : IOrderRepository
 
         if (foundOrder != null)
         {
+            order.Id = foundOrder.Id;
+            
             _logger.LogInformation("Updating order {order}", order);
             await _orders.ReplaceOneAsync(x => x.CodigoPedido == order.CodigoPedido, order);
             return;
