@@ -1,4 +1,4 @@
-﻿namespace Ordering.Consumer.Entities;
+﻿namespace Ordering.API.Entities;
 
 public class Item
 {

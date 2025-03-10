@@ -29,7 +29,7 @@ builder.Services.AddMassTransit(busConfigurator =>
 
 var app = builder.Build();
 
-app.MapEndpoints();
+app.MapOrderEndpoints();
 
 if (app.Environment.IsDevelopment())
 {

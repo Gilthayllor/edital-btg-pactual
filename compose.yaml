@@ -1,14 +1,32 @@
 ﻿services:
+  ordering.api:
+    container_name: ordering.api
+    image: ordering.api
+    build:
+      context: .
+      dockerfile: src/Ordering.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 8081
+    ports:
+      - 5260:8081
+    depends_on:
+      - ordering.seq
+      - ordering.db
+  
   ordering.consumer:
     container_name: ordering.consumer
     image: ordering.consumer
     build:
       context: .
       dockerfile: src/Ordering.Consumer/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      RabbitMq__Host: ordering.rabbitmq
     depends_on:
       - ordering.db
       - ordering.rabbitmq
-        
+  
   ordering.producer:
     container_name: ordering.producer
     image: ordering.producer
@@ -18,11 +36,12 @@
     environment:
       ASPNETCORE_HTTP_PORTS: 8080
       ASPNETCORE_ENVIRONMENT: Development
+      RabbitMq__Host: ordering.rabbitmq
     ports:
-      - 5268:8080
+      - 5261:8080
     depends_on:
       - ordering.rabbitmq
-      
+  
   ordering.db:
     container_name: ordering.db
     image: mongo
@@ -31,9 +50,7 @@
       MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
       - 27017:27017
-    depends_on:
-      - ordering.rabbitmq
-      
+  
   ordering.rabbitmq:
     container_name: ordering.rabbitmq
     image: rabbitmq:management
@@ -42,4 +59,13 @@
       - RABBITMQ_DEFAULT_PASS=ordering
     ports:
       - 5672:5672
-      - 15672:15672
+      - 5262:15672
+        
+  ordering.seq:
+    container_name: ordering.seq
+    image: datalust/seq:latest
+    ports:
+      - 5341:5341
+      - 5263:80
+    environment:
+      ACCEPT_EULA: Y
